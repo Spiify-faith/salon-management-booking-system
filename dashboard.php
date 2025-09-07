@@ -39,6 +39,11 @@ $adminName = $_SESSION["admin_name"];
         <h3 class="text-lg font-semibold text-pink-500">Manage Staff</h3>
         <p class="text-sm text-gray-500 mt-2">Assign roles & working hours.</p>
       </a>
+       
+       <a href="confirm_booking.php" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+        <h3 class="text-lg font-semibold text-pink-500">Confirm Bookings</h3>
+        <p class="text-sm text-gray-500 mt-2">view and approve bookings.</p>
+      </a>
 
       <a href="view_bookings.php" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center">
         <h3 class="text-lg font-semibold text-pink-500">View Bookings</h3>
