@@ -56,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           type="email"
           id="email"
           name="email"
+          placeholder="you@example.com"
           required
           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400"
         />
@@ -67,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           type="password"
           id="password"
           name="password"
+          placeholder="your password"
           required
           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400"
         />

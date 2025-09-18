@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
       <div>
         <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
-        <input type="password" name="confirm_password" id="confirm_password" required class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
+        <input type="password" name="confirm_password" id="confirm_password"  required class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400">
       </div>
 
       <button type="submit" class="w-full bg-pink-500 text-white py-2 px-4 rounded-xl hover:bg-pink-600 transition duration-300">
