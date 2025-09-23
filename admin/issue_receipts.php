@@ -7,6 +7,14 @@ if (!isset($_SESSION["admin_id"])) {
 
 require_once "../db.php";
 
+// Include PHPMailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../lib/PHPMailer-6.8.0/src/Exception.php';
+require '../lib/PHPMailer-6.8.0/src/PHPMailer.php';
+require '../lib/PHPMailer-6.8.0/src/SMTP.php';
+
 // Function to generate and send receipt
 function generateAndSendReceipt($conn, $booking_id) {
     // Get booking details - REMOVED phone column reference
@@ -157,12 +165,7 @@ function generateReceiptHTML($booking) {
 // Function to send receipt email
 function sendReceiptEmail($to_email, $client_name, $receipt_html, $receipt_number) {
     $subject = "Your SalonSync Booking Receipt #$receipt_number";
-    
-    $headers = "From: SalonSync <noreply@salonsync.com>\r\n";
-    $headers .= "Reply-To: info@salonsync.com\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-    
+
     $message = "
     <html>
     <body>
@@ -178,14 +181,34 @@ function sendReceiptEmail($to_email, $client_name, $receipt_html, $receipt_numbe
     </body>
     </html>
     ";
-    
-    // In a real application, you would use a proper email library like PHPMailer
-    // For this example, we'll simulate email sending and return true
-    // return mail($to_email, $subject, $message, $headers);
-    
-    // For development purposes, we'll just log that we would send an email
-    error_log("Would send receipt email to: $to_email with subject: $subject");
-    return true;
+
+    $mail = new PHPMailer(true);
+
+    try {
+        // Server settings
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'landernerd4@gmail.com';
+        $mail->Password = 'ojduiztpldjszuwy';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        // Recipients
+        $mail->setFrom('landernerd4@gmail.com', 'SalonSync');
+        $mail->addAddress($to_email, $client_name);
+
+        // Content
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $message;
+
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        error_log("Email sending failed: " . $mail->ErrorInfo);
+        return false;
+    }
 }
 
 // Handle receipt generation
@@ -194,11 +217,15 @@ $message_type = "";
 
 if (isset($_GET['generate_receipt'])) {
     $booking_id = (int)$_GET['generate_receipt'];
-    
+
     $result = generateAndSendReceipt($conn, $booking_id);
-    
+
     if ($result) {
-        $message = "Receipt generated and sent to client successfully!";
+        if ($result['email_sent']) {
+            $message = "Receipt generated and emailed to client successfully!";
+        } else {
+            $message = "Receipt generated but email sending failed. Please check email configuration.";
+        }
         $message_type = "success";
     } else {
         $message = "Error generating receipt. Booking not found.";
