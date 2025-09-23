@@ -1,12 +1,6 @@
 <?php
 // products.php
 require_once 'auth_helpers.php';
-// Check if user is logged in for products page
-if (!isLoggedIn()) {
-    header('Location: login_required.php');
-    exit();
-}
-
 require_once 'db.php';
 $products = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
 ?>
