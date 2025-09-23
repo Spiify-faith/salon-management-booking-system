@@ -3,7 +3,7 @@
 require_once "auth_helpers.php";
 // Check if user is logged in
 if (!isLoggedIn()) {
-    header('Location: login_required.php');
+    header('Location: login.php');
     exit();
 }
 

@@ -22,15 +22,15 @@ function requireAuth() {
     if (!isLoggedIn()) {
         // Store the requested URL for redirect after login
         $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
-        
+
         // Check if headers already sent
         if (headers_sent($filename, $linenum)) {
             // If headers already sent, use JavaScript redirect as fallback
-            echo '<script>window.location.href = "login_required.php";</script>';
+            echo '<script>window.location.href = "login.php";</script>';
             exit();
         } else {
             // Use PHP header redirect
-            header('Location: login_required.php');
+            header('Location: login.php');
             exit();
         }
     }
