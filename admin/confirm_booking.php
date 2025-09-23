@@ -322,7 +322,7 @@ $completed_bookings = $conn->query("
                 <div class="flex items-center justify-between">
                   <div class="flex items-center">
                     <i class="fas fa-money-bill-wave text-pink-500 w-5"></i>
-                    <span class="ml-2">$<?= number_format($booking['payment_amount'], 2) ?></span>
+                    <span class="ml-2">K<?= number_format($booking['payment_amount'], 2) ?></span>
                     <span class="ml-2 text-xs <?= $booking['payment_status'] == 'paid' ? 'text-green-600' : 'text-red-600' ?>">
                       (<?= ucfirst($booking['payment_status']) ?>)
                     </span>

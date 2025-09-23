@@ -3,7 +3,7 @@ $host = 'localhost';
 $port = 3306; // Default port 
 $db = 'salonsync'; //database name
 $user = 'root';     // Your MySQL username
-$pass = ''; //password 
+$pass = 'seliphil2002'; //password 
 
 // Create connection
 $conn = new mysqli($host, $user, $pass, $db, $port);

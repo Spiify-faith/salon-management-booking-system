@@ -121,7 +121,7 @@ function generateReceiptHTML($booking) {
                 <tr>
                     <td><?= htmlspecialchars($booking['service_type']) ?></td>
                     <td><?= htmlspecialchars($booking['staff_name']) ?> (<?= htmlspecialchars($booking['staff_role']) ?>)</td>
-                    <td>$<?= number_format($booking['payment_amount'], 2) ?></td>
+                    <td>K<?= number_format($booking['payment_amount'], 2) ?></td>
                 </tr>
                 <?php if ($booking['payment_amount'] > 0): ?>
                 <tr>
@@ -151,8 +151,8 @@ function generateReceiptHTML($booking) {
         </div>
         
         <div class="footer">
-            <p>SalonSync • 123 Beauty Street • City, State 12345</p>
-            <p>Phone: (555) 123-4567 • Email: info@salonsync.com</p>
+            <p>SalonSync • kalundu , lusaka ,zambia</p>
+            <p>Phone: +260 9612 34567 • Email: info@salonsync.com</p>
             <p>This is an automated receipt. Please bring this with you to your appointment.</p>
         </div>
     </div>
@@ -172,7 +172,7 @@ function sendReceiptEmail($to_email, $client_name, $receipt_html, $receipt_numbe
         <p>Dear $client_name,</p>
         <p>Thank you for booking with SalonSync! Your appointment has been confirmed.</p>
         <p>Please find your receipt attached below. You can also view it online at any time.</p>
-        <p>If you have any questions or need to reschedule, please contact us at info@salonsync.com or (555) 123-4567.</p>
+        <p>If you have any questions or need to reschedule, please contact us at info@salonsync.com or (+260) 96123-4567.</p>
         <p>We look forward to seeing you!</p>
         <br>
         <p>Best regards,<br>The SalonSync Team</p>

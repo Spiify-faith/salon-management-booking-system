@@ -46,6 +46,34 @@ $slot = isset($_GET['slot']) ? $_GET['slot'] : '';
 </head>
 <body class="bg-light">
 
+<!--nav bar -->
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-pink" href="index.php">SALONSYNC</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link active text-pink" href="booking.php">Booking</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.php">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="terms.php">Terms</a></li>
+          <?php if (isLoggedIn()): ?>
+            <li class="nav-item">
+              <form action="logout.php" method="post">
+                <button type="submit" class="nav-link" style="background:none;border:none;cursor:pointer;">Logout</button>
+              </form>
+            </li>
+          <?php else: ?>
+            <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+          <?php endif; ?>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
 <div class="container mt-5">
   <div class="card shadow p-4">
     <h3 class="mb-4 text-center text-pink">Book Appointment</h3>
@@ -90,17 +118,24 @@ $slot = isset($_GET['slot']) ? $_GET['slot'] : '';
         <textarea name="notes" class="form-control"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-pink w-100 mb-3">Confirm Booking</button>
-      
-      <?php if (isset($_GET['success']) && $_GET['success'] == 1 && isset($_GET['id'])): ?>
-        <div class="payment-section mt-4">
-          <h4 class="text-center">Complete Payment</h4>
-          <form action="/salonsync/zynlepay_charge.php" method="post">
-            <input type="hidden" name="appointment_id" value="<?php echo (int)$_GET['id']; ?>">
-            <button type="submit" class="btn btn-success w-100">Pay Now (ZynlePay)</button>
-          </form>
+      <!-- Payment Section - Moved before booking confirmation -->
+      <div class="payment-section mb-4">
+        <h4 class="text-center" style="color: #e75480;">Payment Information</h4>
+        <div class="card p-3 mb-3">
+          <p class="mb-2"><strong>Booking Fee:</strong> k50.00</p>
+          <p class="mb-2"><strong>Payment Method:</strong> ZynlePay</p>
+          <p class="mb-0"><strong>Note:</strong> Payment is required to confirm your booking.</p>
         </div>
-      <?php endif; ?>
+        
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="agreeToPay" required>
+          <label class="form-check-label" for="agreeToPay">
+            I agree to pay the service fee using ZynlePay
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-pink w-100 mb-3">Book Appointment & Pay Now</button>
     </form>
   </div>
 </div>
@@ -138,7 +173,10 @@ $slot = isset($_GET['slot']) ? $_GET['slot'] : '';
     font-weight: 500;
     color: #e75480;
   }
+  .payment-section .card {
+    background-color: #f8f9fa;
+    border-left: 4px solid #e75480;
+  }
 </style> 
 </html>
 <?php $conn->close(); ?>
-

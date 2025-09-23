@@ -38,7 +38,7 @@ require_once 'auth_helpers.php';
     <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       <!-- Service Example Card -->
       <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <img src="https://via.placeholder.com/300x200" alt="Service 1" class="w-full h-48 object-cover">
+        <img src="uploads/acrylic.jpg" alt="Service 1" class="w-full h-48 object-cover">
         <div class="p-4">
           <h3 class="text-lg font-semibold text-pink-600">Acrylic Nails - Long</h3>
           <p class="text-sm text-gray-600">Bold, beautiful long acrylics. Customize on booking.</p>
@@ -46,7 +46,7 @@ require_once 'auth_helpers.php';
       </div>
 
       <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <img src="https://via.placeholder.com/300x200" alt="Service 2" class="w-full h-48 object-cover">
+        <img src="uploads/micro braids.jpg" alt="Service 2" class="w-full h-48 object-cover">
         <div class="p-4">
           <h3 class="text-lg font-semibold text-pink-600">Micro Braids</h3>
           <p class="text-sm text-gray-600">Can last you up to 2 months without looking old!</p>
@@ -54,7 +54,7 @@ require_once 'auth_helpers.php';
       </div>
 
       <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <img src="https://via.placeholder.com/300x200" alt="Service 3" class="w-full h-48 object-cover">
+        <img src="uploads/gel nails.webp" alt="Service 3" class="w-full h-48 object-cover">
         <div class="p-4">
           <h3 class="text-lg font-semibold text-pink-600">Gel Polish</h3>
           <p class="text-sm text-gray-600">High-gloss, chip-resistant finish. Add design in notes!</p>
@@ -62,7 +62,7 @@ require_once 'auth_helpers.php';
       </div>
 
       <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <img src="https://via.placeholder.com/300x200" alt="Service 4" class="w-full h-48 object-cover">
+        <img src="uploads/hair colouring.jpg" alt="Service 4" class="w-full h-48 object-cover">
         <div class="p-4">
           <h3 class="text-lg font-semibold text-pink-600">Hair Coloring</h3>
           <p class="text-sm text-gray-600">Professional hair coloring with premium products.</p>
@@ -70,7 +70,7 @@ require_once 'auth_helpers.php';
       </div>
 
       <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <img src="https://via.placeholder.com/300x200" alt="Service 5" class="w-full h-48 object-cover">
+        <img src="uploads/facial.jpg" alt="Service 5" class="w-full h-48 object-cover">
         <div class="p-4">
           <h3 class="text-lg font-semibold text-pink-600">Facial Treatments</h3>
           <p class="text-sm text-gray-600">Rejuvenating facials for glowing skin.</p>
@@ -78,13 +78,14 @@ require_once 'auth_helpers.php';
       </div>
 
       <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <img src="https://via.placeholder.com/300x200" alt="Service 6" class="w-full h-48 object-cover">
+        <img src="uploads/lashes.webp" alt="Service 6" class="w-full h-48 object-cover">
         <div class="p-4">
           <h3 class="text-lg font-semibold text-pink-600">Eyelash Extensions</h3>
           <p class="text-sm text-gray-600">Luxurious eyelash extensions for a dramatic look.</p>
         </div>
       </div>
     </div>
+    
   </section>
 
   <!-- Footer -->

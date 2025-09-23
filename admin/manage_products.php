@@ -54,22 +54,27 @@ $products = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
   <title>Manage Products - SalonSync Admin</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-  <nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
-  <h1 class="text-2xl font-bold text-pink-500">SALONSYNC</h1>
-  <ul class="flex space-x-4 text-sm font-medium">
-    <li><a href="dashboard.php" class="hover:text-pink-600">dashboard</a></li>
-    <li><a href="manage_staff.php" class="hover:text-pink-600">staff management</a></li>
-    <li><a href="view_bookings.php" class="hover:text-pink-600">bookings management</a></li>
-    <li><a href="issue_receipts.php" class="hover:text-pink-600">receipts</a></li>
-  </ul>
-</nav>
+  <header class="bg-pink-500 text-white py-4 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <a href="dashboard.php" class="mr-4 text-white">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+        <h1 class="text-xl font-bold">SalonSync Admin - Issue Receipts</h1>
+      </div>
+      <div>
+        <span class="mr-4">Welcome, <?= htmlspecialchars($_SESSION["admin_name"]) ?></span>
+        <a href="logout.php" class="bg-white text-pink-500 px-3 py-1 rounded hover:bg-pink-100 transition">Logout</a>
+      </div>
+    </div>
+  </header>
 
 
 <body class="bg-gray-100 min-h-screen">
   <div class="max-w-6xl mx-auto p-6 mt-10 bg-white shadow-lg rounded-xl">
     <h2 class="text-2xl font-bold text-pink-500 mb-4">Manage Products</h2>
 
-    <!-- ✅ Add Product Form -->
+    <!--  Add Product Form -->
     <form method="POST" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-5 gap-4 items-end mb-6">
       <input type="text" name="name" placeholder="Product Name" required class="p-2 border rounded">
       <input type="text" name="description" placeholder="Description (optional)" class="p-2 border rounded">
@@ -79,7 +84,7 @@ $products = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
       <button type="submit" name="add_product" class="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 col-span-full md:col-span-1">Add</button>
     </form>
 
-    <!-- ✅ Product Table -->
+    <!--  Product Table -->
     <div class="overflow-x-auto">
       <table class="min-w-full table-auto text-sm border">
         <thead class="bg-pink-100 text-pink-800">
